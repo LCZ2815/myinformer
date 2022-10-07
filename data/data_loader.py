@@ -46,9 +46,13 @@ class Dataset_ETT_hour(Dataset):
         self.scaler = StandardScaler()
         df_raw = pd.read_csv(os.path.join(self.root_path,
                                           self.data_path))
-
-        border1s = [0, 12*30*24 - self.seq_len, 12*30*24+4*30*24 - self.seq_len]
-        border2s = [12*30*24, 12*30*24+4*30*24, 12*30*24+8*30*24]
+        funlen_data=15685
+        funlen_train=int(funlen_data*0.6)
+        funlen_val=int(funlen_data*0.2)
+        funlen_test=funlen_data-funlen_train-funlen_val
+        
+        border1s = [0, funlen_train - self.seq_len, funlen_train+funlen_val - self.seq_len]
+        border2s = [funlen_train, funlen_train+funlen_val, funlen_train+funlen_val_funlen_test]
         border1 = border1s[self.set_type]
         border2 = border2s[self.set_type]
         
