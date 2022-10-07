@@ -52,7 +52,7 @@ class Dataset_ETT_hour(Dataset):
         funlen_test=funlen_data-funlen_train-funlen_val
         
         border1s = [0, funlen_train - self.seq_len, funlen_train+funlen_val - self.seq_len]
-        border2s = [funlen_train, funlen_train+funlen_val, funlen_train+funlen_val_funlen_test]
+        border2s = [funlen_train, funlen_train+funlen_val, funlen_train+funlen_val+funlen_test]
         border1 = border1s[self.set_type]
         border2 = border2s[self.set_type]
         
